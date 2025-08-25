@@ -40,9 +40,9 @@ def ingest_api_users():
     print("Dados transformados em um DataFrame.")
 
     # 3. CARREGAMENTO (Load para o Databricks)
-    databricks_host = "dbc-633cddea-5b0a.cloud.databricks.com"
-    databricks_token = "***REMOVED***"
-    http_path = "/sql/1.0/warehouses/1156521272726c40" # O "HTTP Path" também está na aba "Connection details"
+    databricks_host = os.getenv("DATABRICKS_HOST")
+    databricks_token = os.getenv("DATABRICKS_TOKEN")
+    http_path = os.getenv("DATABRICKS_HTTP_PATH")
 
     if not all([databricks_host, databricks_token, http_path]):
         raise ValueError("As credenciais do Databricks não foram encontradas nas variáveis de ambiente.")

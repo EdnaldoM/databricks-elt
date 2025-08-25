@@ -1,0 +1,4 @@
+requests
+pandas
+databricks-sql-connector
+databricks-sql-connector[pyarrow]

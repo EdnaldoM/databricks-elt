@@ -1,0 +1,31 @@
+name: Ingestão Diária de Usuários (JSONPlaceholder)
+
+on:
+  schedule:
+    # Agendado para rodar todo dia às 3 da manhã (UTC)
+    - cron: '0 3 * * *'
+  # Permite que você rode manualmente pela interface do GitHub
+  workflow_dispatch:
+
+jobs:
+  ingest-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependências Python
+        run: pip install -r requirements.txt
+
+      - name: Executar script de ingestão de usuários
+        env:
+          # Apenas as credenciais do Databricks são necessárias agora
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_HTTP_PATH: ${{ secrets.DATABRICKS_HTTP_PATH }}
+        run: python jsonplaceholder_ingestion.py
