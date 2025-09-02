@@ -1,9 +1,9 @@
 name: Ingestão Diária de Usuários (JSONPlaceholder)
 
 on:
-  schedule:
-    # Agendado para rodar todo dia às 3 da manhã (UTC)
-    - cron: '0 3 * * *'
+  # schedule:
+  #   # Agendado para rodar todo dia às 3 da manhã (UTC)
+  #   - cron: '0 3 * * *'
   # Permite que você rode manualmente pela interface do GitHub
   workflow_dispatch:
 
