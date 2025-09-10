@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: api
+    database: raw
+    schema: jsonplaceholder
+    tables:
+      - name: api_users
