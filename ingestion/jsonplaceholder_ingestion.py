@@ -53,7 +53,7 @@ def ingest_api_users():
                      access_token=databricks_token) as connection:
         with connection.cursor() as cursor:
             # Assume que a tabela já existe
-            # O ideal é usar MERGE, mas INSERT é mais simples para começar
+            # O ideal é usar MERGE, mas INSERT é mais simples para começar frescar
             data_to_insert = [tuple(row) for row in df.values.tolist()]
             cursor.execute("USE raw.jsonplaceholder;")
             cursor.executemany(
